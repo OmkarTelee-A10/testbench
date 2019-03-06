@@ -78,12 +78,13 @@ class A10ProviderDriver(driver_base.ProviderDriver):
 
         print("imagine we have completed ACOS calls here")
 
-        print(consts.ACTIVE)
+        # setting up status ACTIVE/ERROR based on ACOS call
         status = {
                  'loadbalancers': [{"id": loadbalancer.loadbalancer_id,
                  "provisioning_status": consts.ACTIVE }]}
         print(status)
-        print("updated the database")
+        # Using Threads to update DB
+        print("updating the database using new thread")
         DBHelper(status)
         #self.updateStatus(status)
         #raise NotImplementedError(user_fault_string=errorString)
